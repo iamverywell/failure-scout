@@ -1,0 +1,23 @@
+[project]
+name = "failure-scout"
+version = "0.1.0"
+description = "Collect news about failed clinical trials into SQLite"
+requires-python = ">=3.11"
+dependencies = ["anthropic>=2.6", "pydantic>=2.7", "gspread>=6.2"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+docs = ["pymupdf"]  # docs/make_main_figure.py renders the framework figure
+
+[project.scripts]
+scout = "failure_scout.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
